@@ -6,6 +6,7 @@ namespace EGrocer.API.Controllers
     [ApiController]
     public class ValuesController : ControllerBase
     {
+        [HttpGet]
         public string Method()
         {
             return "Surya";

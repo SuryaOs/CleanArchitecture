@@ -1,6 +1,7 @@
 using EGrocer.Application;
 using EGrocer.Infrastructure;
 using EGrocer.API;
+using EGrocer.API.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,7 +13,7 @@ builder.Services
 
 var app = builder.Build();
 
+app.AddSwagger();
 app.UseHttpsRedirection();
 app.MapControllers();
-
 app.Run();
