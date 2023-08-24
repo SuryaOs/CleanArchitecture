@@ -22,4 +22,8 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\EGrocer.API\EGrocer.API.csproj" />
+  </ItemGroup>
+
 </Project>
