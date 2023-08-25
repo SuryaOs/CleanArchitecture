@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using EGrocer.Core.Common.Interface;
+using EGrocer.Core.Entities;
+using Microsoft.AspNetCore.Mvc;
 
 namespace EGrocer.API.Controllers
 {
@@ -6,10 +8,15 @@ namespace EGrocer.API.Controllers
     [ApiController]
     public class ValuesController : ControllerBase
     {
+        private readonly IApplicationDbContext _dbContext;
+        public ValuesController(IApplicationDbContext dbContext) { 
+            _dbContext = dbContext;
+        }
         [HttpGet]
-        public string Method()
+        public List<Product> Method()
         {
-            return "Surya";
+            var result = _dbContext.Products.ToList();
+            return result;
         }
 
     }
