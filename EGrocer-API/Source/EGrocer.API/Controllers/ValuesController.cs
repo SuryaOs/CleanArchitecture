@@ -1,5 +1,7 @@
 ﻿using EGrocer.Core.Common.Interface;
 using EGrocer.Core.Entities;
+using EGrocer.Core.Repositories.Queries;
+using EGrocer.Infrastructure.Repositories.Queries;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EGrocer.API.Controllers
@@ -8,15 +10,15 @@ namespace EGrocer.API.Controllers
     [ApiController]
     public class ValuesController : ControllerBase
     {
-        private readonly IApplicationDbContext _dbContext;
-        public ValuesController(IApplicationDbContext dbContext) { 
-            _dbContext = dbContext;
+        private readonly IProductQueryRepository _productQueryRepository;
+        public ValuesController(IProductQueryRepository productQueryRepository) {
+            _productQueryRepository = productQueryRepository;
         }
         [HttpGet]
         public List<Product> Method()
         {
-            var result = _dbContext.Products.ToList();
-            return result;
+            var result = _productQueryRepository.GetAllProductsAsync();
+            return result.ToList();
         }
 
     }
