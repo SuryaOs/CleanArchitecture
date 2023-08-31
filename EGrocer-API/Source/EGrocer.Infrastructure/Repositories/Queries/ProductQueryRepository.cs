@@ -16,7 +16,7 @@ public class ProductQueryRepository : IProductQueryRepository
 
     public IQueryable<Product> GetAllProductsAsync()
     {
-       return _applicationDbContext.Products.AsNoTracking().AsQueryable();
+        return _applicationDbContext.Products.AsNoTracking();
     }
 
     //public async Task<IEnumerable<Product>> GetProductsByCategory(int categoryId)

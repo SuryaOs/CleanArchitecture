@@ -1,7 +1,6 @@
-﻿using EGrocer.Core.Common.Interface;
+﻿using EGrocer.Application.Queries.Products;
 using EGrocer.Core.Entities;
-using EGrocer.Core.Repositories.Queries;
-using EGrocer.Infrastructure.Repositories.Queries;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EGrocer.API.Controllers
@@ -10,15 +9,14 @@ namespace EGrocer.API.Controllers
     [ApiController]
     public class ValuesController : ControllerBase
     {
-        private readonly IProductQueryRepository _productQueryRepository;
-        public ValuesController(IProductQueryRepository productQueryRepository) {
-            _productQueryRepository = productQueryRepository;
+        private readonly IMediator _mediator;
+        public ValuesController(IMediator mediator) {
+            _mediator = mediator;
         }
         [HttpGet]
-        public List<Product> Method()
+        public async Task<IEnumerable<Product>> Method()
         {
-            var result = _productQueryRepository.GetAllProductsAsync();
-            return result.ToList();
+            return await _mediator.Send(new GetProduct());
         }
 
     }
