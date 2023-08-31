@@ -1,4 +1,5 @@
 ﻿using EGrocer.Application.Queries.Products;
+using EGrocer.Application.Queries.Products.GetProductByCategoy;
 using EGrocer.Core.Entities;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
@@ -14,10 +15,16 @@ namespace EGrocer.API.Controllers
             _mediator = mediator;
         }
         [HttpGet]
-        public async Task<IEnumerable<Product>> Method()
+        public async Task<IEnumerable<Product>> GetProducts()
         {
             return await _mediator.Send(new GetProduct());
         }
+        [HttpGet("categoryId")]
+        public async Task<IEnumerable<Product>> GetProducts(int categoryId)
+        {
+            return await _mediator.Send(new GetProductByCategory(categoryId));
+        }
+
 
     }
 }

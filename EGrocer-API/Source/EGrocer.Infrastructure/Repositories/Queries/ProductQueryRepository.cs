@@ -18,9 +18,4 @@ public class ProductQueryRepository : IProductQueryRepository
     {
         return _applicationDbContext.Products.AsNoTracking();
     }
-
-    //public async Task<IEnumerable<Product>> GetProductsByCategory(int categoryId)
-    //{
-    //    return await _applicationDbContext.Products.Where(x => x.CategoryId == categoryId).ToListAsync();
-    //}
 }
