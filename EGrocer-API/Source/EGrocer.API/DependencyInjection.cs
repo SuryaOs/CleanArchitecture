@@ -4,10 +4,12 @@ namespace EGrocer.API;
 
 public static class DependencyInjection
 {
-    public static IServiceCollection AddPresentation(this IServiceCollection services)
+    public static IServiceCollection AddPresentation(this IServiceCollection services, IConfiguration configuration)
     {
         services
-            .ConfigureOpenApi();
+            .ConfigureOpenApi()
+            .ConfigureCors()
+            .ConfigureAuthentication(configuration);
 
         return services;
     }

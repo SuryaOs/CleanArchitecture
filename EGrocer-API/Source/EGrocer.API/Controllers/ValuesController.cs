@@ -2,12 +2,14 @@
 using EGrocer.Application.Queries.Products.GetProductByCategoy;
 using EGrocer.Core.Entities;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EGrocer.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class ValuesController : ControllerBase
     {
         private readonly IMediator _mediator;
@@ -19,10 +21,15 @@ namespace EGrocer.API.Controllers
         {
             return await _mediator.Send(new GetProduct());
         }
-        [HttpGet("categoryId")]
+        [HttpGet("{categoryId:int}")]
         public async Task<IEnumerable<Product>> GetProducts(int categoryId)
         {
             return await _mediator.Send(new GetProductByCategory(categoryId));
+        }
+        [HttpGet("Docker")]
+        public string Get()
+        {
+            return "Docker";
         }
 
 
