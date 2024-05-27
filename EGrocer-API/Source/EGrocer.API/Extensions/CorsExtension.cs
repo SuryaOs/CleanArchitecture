@@ -1,6 +1,4 @@
-﻿using Microsoft.OpenApi.Models;
-
-namespace EGrocer.API.Extensions;
+﻿namespace EGrocer.API.Extensions;
 
 public static class CorsExtension
 {

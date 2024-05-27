@@ -1,0 +1,13 @@
+{
+  "runtime": "Net70",
+  "documentGenerator": {
+    "fromDocument": {
+      "json": "../.build/swagger/swagger.json"
+    }
+  },
+  "codeGenerators": {
+    "openApiToCSharpClient": {
+      "output": "ApiClient.generated.cs"
+    }
+  }
+}

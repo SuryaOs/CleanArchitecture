@@ -9,7 +9,7 @@ namespace EGrocer.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize]
+    //[Authorize]
     public class ValuesController : ControllerBase
     {
         private readonly IMediator _mediator;
